@@ -29,7 +29,7 @@ class LoopBack:
  
 
 
-#sp.start_up()
+sp.start_up()
 parser = LoopBack() 
 port = sp.open(parser)
 
