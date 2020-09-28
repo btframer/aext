@@ -41,10 +41,11 @@ def start_up():
         sys.exit(0)
 
     if (len(sys.argv) >= 2):
-	    PORTNAME = sys.argv[1]
+        PORTNAME = sys.argv[1]
+        print ("PORTNAME:" + PORTNAME)
 
 
-def open(parser, port_name = PORTNAME):
+def open(parser):
     port = SerialReader()
-    port.open(port_name, BAUDRATE, parser)
+    port.open(PORTNAME, BAUDRATE, parser)
     return port
