@@ -31,12 +31,10 @@ class WriteRegister:
 
 
 
-PORTNAME = 'COM7'
 REGISTER = 'NOTIF_ACK'
 VALUE = 0
 
 def start_up():
-    global PORTNAME
     global REGISTER    
     global VALUE        
 
@@ -46,11 +44,11 @@ def start_up():
         print ("Register List:")
         print (reg.registers)
         sys.exit(0)
-    PORTNAME = sys.argv[1]
     REGISTER = sys.argv[2]    
     VALUE = int(sys.argv[3], 0)
 
 start_up()
+sp.start_up()
 
 parser = WriteRegister() 
 port = sp.open(parser, PORTNAME)

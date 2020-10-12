@@ -32,10 +32,8 @@ class ReadRegister:
 
 
 
-PORTNAME = 'COM7'
 REGISTER = 'HRD_VER'
 def start_up():
-    global PORTNAME
     global REGISTER    
 
     if (len(sys.argv) < 3):
@@ -44,13 +42,13 @@ def start_up():
         print ("Register List:")
         print (reg.registers)
         sys.exit(0)
-    PORTNAME = sys.argv[1]
     REGISTER = sys.argv[2]    
 
 start_up()
+sp.start_up()
 
 parser = ReadRegister() 
-port = sp.open(parser, PORTNAME)
+port = sp.open(parser)
 
 output_frame =  fr.Frame()
 output_frame.read_reg(REGISTER)
