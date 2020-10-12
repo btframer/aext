@@ -2,12 +2,19 @@ import src.frame as fr
 
 def test_read_frame():
     f =  fr.Frame()
-    f.read_reg('HRD_VER')
+    f.read_reg('SW_VER')
     print("Frame to send :"+str(f))
 
 
     b1 = f.get_frame()
     print("Buffer to send :"+str(b1))    
+
+    # responce symulation
+    f.frame_size += 2
+    f.frame_type = fr.FrameType.Response
+    f.payload = [0x55, 0xaa]
+    b1 = f.get_frame()
+    print("Buffer to received :"+str(b1))    
 
     f_out =  fr.Frame()
     for i in b1:
@@ -64,9 +71,9 @@ def test_read_buffer_frame():
 def test_frame():
     print("--------test_read_frame-----------")
     test_read_frame()
-    print("--------test_write_frame-----------")    
-    test_write_frame()
-    print("--------test_write_array_frame-----------")    
-    test_write_array_frame()
-    print("--------test_read_buffer_frame-----------")    
-    test_read_buffer_frame()
+#    print("--------test_write_frame-----------")    
+#   test_write_frame()
+#    print("--------test_write_array_frame-----------")    
+#    test_write_array_frame()
+#    print("--------test_read_buffer_frame-----------")    
+#    test_read_buffer_frame()
