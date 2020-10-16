@@ -30,6 +30,9 @@ read_register.py - Read register.
 
 write_register.py - Write register.  
 
+parse_frame.py  - Parsing frames from a file. Data read from the serial port ripping to a file. You can decompose the frame from the file.
+
+
 
                    
 

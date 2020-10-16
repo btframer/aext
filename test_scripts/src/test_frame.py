@@ -53,15 +53,16 @@ def test_write_array_frame():
 
 
 def test_read_buffer_frame():
+    size_array = 64
     f =  fr.Frame()
-    f.read_buffer('USART1_RX_FIFO', 64)
+    f.read_buffer('USART1_RX_FIFO', size_array)
     print("Frame to send :"+str(f))
 
     b1 = f.get_frame()
     print("Buffer to send :"+str(b1))    
 
     f =  fr.Frame()
-    f.write_buffer('USART1_TX_FIFO', [0]*64)
+    f.write_buffer('USART1_TX_FIFO', [0]*size_array)
     print("Frame to send :"+str(f))
 
     b1 = f.get_frame()
@@ -69,11 +70,11 @@ def test_read_buffer_frame():
 
 
 def test_frame():
-    print("--------test_read_frame-----------")
-    test_read_frame()
+    #print("--------test_read_frame-----------")
+    #test_read_frame()
 #    print("--------test_write_frame-----------")    
 #   test_write_frame()
 #    print("--------test_write_array_frame-----------")    
 #    test_write_array_frame()
-#    print("--------test_read_buffer_frame-----------")    
-#    test_read_buffer_frame()
+    print("--------test_read_buffer_frame-----------")    
+    test_read_buffer_frame()

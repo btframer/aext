@@ -1,6 +1,10 @@
 import sys
+import io
 import serial
 import serial.threaded
+
+write_to_file = True
+file_name = "input.bin"
 
 class SerialReader(serial.threaded.Protocol):
     def __init__(self):
@@ -8,10 +12,15 @@ class SerialReader(serial.threaded.Protocol):
         self.serial_worker = None
         self.parser = None
 
+
     def __call__(self):
         return self
 
     def data_received(self, data):
+        if write_to_file:
+            f = io.open(file_name, "ab")
+            f.write(bytearray(data))
+            f.close()
         self.parser.data_received(data)
 
     def open(self, port, br, parser):
